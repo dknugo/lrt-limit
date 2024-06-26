@@ -16,10 +16,16 @@ DEF_TAKER = "weETH"
 DEF_MAKER = "WETH"
 
 TOKENS_LIST = [
-    ['0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 'WETH'],
-    ['0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe', 'weETH'],
-    ['0x4186BFC76E2E237523CBC30FD220FE055156b41F', 'rsETH'],
-    ['0x2416092f143378750bb29b79eD961ab195CcEea5', 'ezETH']
+    [1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 'WETH'],
+    [1, '0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee', 'weETH'],
+    [1, '0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7', 'rsETH'],
+    [1, '0xbf5495Efe5DB9ce00f80364C8B423567e58d2110', 'ezETH'],
+    [1, '0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0', 'rswETH'],
+    [1, '0xD9A442856C234a39a81a089C06451EBAa4306a72', 'pufETH'],
+    [42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 'WETH'],
+    [42161, '0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe', 'weETH'],
+    [42161, '0x4186BFC76E2E237523CBC30FD220FE055156b41F', 'rsETH'],
+    [42161, '0x2416092f143378750bb29b79eD961ab195CcEea5', 'ezETH']
 ]
 
 
@@ -109,7 +115,8 @@ with st.sidebar:
         st.stop()
     else:
         # tokens_df = get_tokens(chain_sel)
-        tokens_df = pd.DataFrame(data = TOKENS_LIST, columns = ['address', 'symbol'])
+        tokens_df = pd.DataFrame(data = TOKENS_LIST, columns = ['chain', 'address', 'symbol'])
+        tokens_df = tokens_df[tokens_df.chain == chain_sel][['address', 'symbol']]
         maker_asset = st.selectbox(
             'Select maker asset:',
             tokens_df,
