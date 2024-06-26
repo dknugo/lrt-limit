@@ -64,7 +64,7 @@ def get_limit_orders_oneinch(chain_id, maker_asset, taker_asset):
     page_num = 1
     while True:
         url = ONEINCH_API_URL + '/' + str(chain_id) + '/all?page=' + str(page_num)\
-                + '&limit=500&statuses=%5B1%5D'\
+                + '&limit=500&statuses=1'\
                 + '&makerAsset=' + maker_asset + '&takerAsset=' + taker_asset
         res = requests.get(url)
         if res.status_code == 200:
