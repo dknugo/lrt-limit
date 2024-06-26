@@ -12,8 +12,8 @@ CHAINS_LIST = [
                 [42161, 'Arbitrum']
             ]
 
-DEF_TAKER = "WETH"
-DEF_MAKER = "weETH"
+DEF_TAKER = "weETH"
+DEF_MAKER = "WETH"
 
 TOKENS_LIST = [
     ['0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 'WETH'],
@@ -74,7 +74,7 @@ def get_limit_orders_oneinch(chain_id, maker_asset, taker_asset):
                                             'maker_amount': float(data['data']['makingAmount']) / 1e18,
                                             'taker_amount': float(data['data']['takingAmount']) / 1e18,
                                             'maker': data['data']['maker'],
-                                            'rate': float(data['makerRate'])
+                                            'rate': 1 / float(data['makerRate'])
                                             }
                                             for data in res.json()])
                 agg_orders_df = pd.concat([agg_orders_df, orders_df], axis = 0).reset_index()
