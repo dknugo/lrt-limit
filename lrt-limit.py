@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import requests
 
 PARASWAP_API_URL = "https://apiv5.paraswap.io"
-ONEINCH_API_URL = "https://limit-orders.1inch.io/v3.0"
+ONEINCH_API_URL = "https://limit-orders.1inch.io/v4.0"
 
 CHAINS_LIST = [
                 # [1, 'Ethereum'],
